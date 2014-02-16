@@ -43,7 +43,7 @@ Not all types of markdown are supported. The things which are supported are:
 + Code (without highlighting)
 + Block quotes
 
-This is not a compleate list and some other markdown syntax not on the list may work but haven't been tested.
+This is not a compleate list and some other markdown syntax not on the list may work but hasn't been tested.
 
 Sample image
 -----------
