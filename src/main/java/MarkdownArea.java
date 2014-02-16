@@ -21,7 +21,6 @@ public class MarkdownArea extends JPanel{
 
     private void init(){
         this.setLayout(new BorderLayout());
-        //label.setPreferredSize(new Dimension(300, 0));
         JPanel p = new JPanel();
         this.add(label);
         this.setBackground(Color.WHITE);
@@ -30,10 +29,10 @@ public class MarkdownArea extends JPanel{
     public void setText(String text){
         this.text = text;
         try {
+            int width = getWidth()-50; //50px margin
+            if(width < minWidth) width = minWidth;
             //Parse the markdown and turn it into HTML
             //Then add HTML tags and set the width so it wraps the text
-            int width = getWidth();
-            if(width < minWidth) width = minWidth;
             label.setText(String.format("<html><div WIDTH=%d>%s</div><html>", width,new Markdown4jProcessor().process(text)));
         } catch (IOException e) {
             e.printStackTrace();

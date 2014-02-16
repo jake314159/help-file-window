@@ -1,5 +1,3 @@
-import org.markdown4j.Markdown4jProcessor;
-
 import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
@@ -15,22 +13,21 @@ public class HelpWindow extends JFrame{
     private Map<File, String> textMap;
 
     public static void main(String[] args){
-        try {
+        /*try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }
+        }       */
         //An example of running the program
         new HelpWindow(new File("exampleHelpFiles")).popup();
-
     }
 
     public HelpWindow(File helpDir){
-
         pageList = new PageList(helpDir){
             @Override
             public void optionPicked(File helpFile) {
-                System.out.println("Selected"+helpFile);
+                //When we pick an option we should find the help string and
+                //Put it into the markdownArea
                 markdownArea.setText(textMap.get(helpFile));
             }
         };
@@ -52,22 +49,24 @@ public class HelpWindow extends JFrame{
 
         this.add(new JScrollPane(markdownArea), BorderLayout.CENTER);
         this.add(pageList, BorderLayout.WEST);
-        this.setSize(600,600);
+        this.setSize(650,550);
+        this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
     public void popup(){
         this.setVisible(true);
     }
 
+
+    //These 2 methods handle reading the help files and storing them in a map
+    //To save having to read the file every time the user hits a button
     private Map<File, String> readFiles(File[] files){
         TreeMap<File, String> map = new TreeMap<File, String>();
         for(File f : files){
-            //Store help text in map
             map.put(f, readFile(f));
         }
         return map;
     }
-
     private String readFile(File f){
         try {
             BufferedReader br = new BufferedReader(new FileReader(f));
@@ -83,7 +82,7 @@ public class HelpWindow extends JFrame{
             return sb.toString();
 
         } catch(Exception e){
-
+            e.printStackTrace();
         }
 
         return "";
