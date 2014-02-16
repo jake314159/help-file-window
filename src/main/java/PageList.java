@@ -55,6 +55,7 @@ public abstract class PageList extends JPanel{
         System.out.println("Exists?" + markdownDirectory.exists());
         System.out.println("Is directory?" + markdownDirectory.isDirectory());
         final JList list = new JList(filesString); //data has type Object[]
+        list.setSelectedIndex(0);
         list.setLayoutOrientation(JList.VERTICAL);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.addListSelectionListener(new ListSelectionListener() {
@@ -70,11 +71,18 @@ public abstract class PageList extends JPanel{
         //list.setPreferredSize(new Dimension(150, 0));
         this.add(new JScrollPane(list));
 
+        optionPicked((File) filesObj[0]); //Set default
+        list.setSelectedIndex(0);
+
     }
 
     public abstract void optionPicked(File helpFileSelected);
 
     public File[] getFileOptions() {
         return filesObj;
+    }
+
+    public File getDefaultFile(){
+        return filesObj[0];
     }
 }

@@ -8,6 +8,7 @@ public class MarkdownArea extends JPanel{
 
     private String text = "";
     private JLabel label = new JLabel(text);
+    private int minWidth = 400;
 
     public MarkdownArea(){
         SwingUtilities.invokeLater(new Runnable() {
@@ -31,11 +32,20 @@ public class MarkdownArea extends JPanel{
         try {
             //Parse the markdown and turn it into HTML
             //Then add HTML tags and set the width so it wraps the text
-            label.setText(String.format("<html><div WIDTH=%d>%s</div><html>", getWidth(),new Markdown4jProcessor().process(text)));
+            int width = getWidth();
+            if(width < minWidth) width = minWidth;
+            label.setText(String.format("<html><div WIDTH=%d>%s</div><html>", width,new Markdown4jProcessor().process(text)));
         } catch (IOException e) {
             e.printStackTrace();
             label.setText("");
         }
+    }
+
+    public void setMinWidth(int minWidth){
+        this.minWidth = minWidth;
+    }
+    public int getMinWidth(){
+        return minWidth;
     }
 
 }

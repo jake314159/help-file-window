@@ -20,7 +20,8 @@ public class HelpWindow extends JFrame{
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
         }
-        new HelpWindow(new File("helpFiles")).popup();
+        //An example of running the program
+        new HelpWindow(new File("exampleHelpFiles")).popup();
 
     }
 
@@ -48,15 +49,6 @@ public class HelpWindow extends JFrame{
     }
     private void init(){
         this.setLayout(new BorderLayout());
-
-        markdownArea.setText("#Here will be the help file\n#Subsection\nBody text\n" +
-                "1\n" +  "2\n" +"3\n" + "4\n" + "5\n" +"more\n" + "more\n" + "more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n"+
-                "1\n" +  "2\n" +"3\n" + "4\n" + "5\n" +"more\n" + "more\n" + "more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n"+
-                "1\n" +  "2\n" +"3\n" + "4\n" + "5\n" +"more\n" + "more\n" + "more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n"+
-                "1\n" +  "2\n" +"3\n" + "4\n" + "5\n" +"more\n" + "more\n" + "more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n"+
-                "1\n" +  "2\n" +"3\n" + "4\n" + "5\n" +"more\n" + "more\n" + "more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n" +"more\n" +"more\n" + "more\n" + "more\n"
-
-        );
 
         this.add(new JScrollPane(markdownArea), BorderLayout.CENTER);
         this.add(pageList, BorderLayout.WEST);
