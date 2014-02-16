@@ -13,16 +13,17 @@ public class HelpWindow extends JFrame{
     private Map<File, String> textMap;
 
     public static void main(String[] args){
-        /*try {
+        try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
             e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
-        }       */
+        }
         //An example of running the program
-        new HelpWindow(new File("exampleHelpFiles")).popup();
+        new HelpWindow("Help window -- My Program",new File("exampleHelpFiles")).popup();
     }
 
-    public HelpWindow(File helpDir){
+    public HelpWindow(String title, File helpDir){
+        super(title);
         pageList = new PageList(helpDir){
             @Override
             public void optionPicked(File helpFile) {
@@ -49,7 +50,7 @@ public class HelpWindow extends JFrame{
 
         this.add(new JScrollPane(markdownArea), BorderLayout.CENTER);
         this.add(pageList, BorderLayout.WEST);
-        this.setSize(650,550);
+        this.setSize(750,550);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
     }
 
