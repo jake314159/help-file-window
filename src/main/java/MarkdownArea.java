@@ -34,6 +34,7 @@ public class MarkdownArea extends JPanel{
             //Parse the markdown and turn it into HTML
             //Then add HTML tags and set the width so it wraps the text
             label.setText(String.format("<html><div WIDTH=%d>%s</div><html>", width,new Markdown4jProcessor().process(text)));
+
         } catch (IOException e) {
             e.printStackTrace();
             label.setText("");

@@ -16,7 +16,7 @@ public class HelpWindow extends JFrame{
         try {
             UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
         } catch (Exception e) {
-            e.printStackTrace();  //To change body of catch statement use File | Settings | File Templates.
+            e.printStackTrace();
         }
         //An example of running the program
         new HelpWindow("Help window -- My Program",new File("exampleHelpFiles")).popup();
@@ -48,7 +48,12 @@ public class HelpWindow extends JFrame{
     private void init(){
         this.setLayout(new BorderLayout());
 
-        this.add(new JScrollPane(markdownArea), BorderLayout.CENTER);
+        final JPanel alignToTop = new JPanel();
+        alignToTop.setLayout(new BorderLayout());
+        alignToTop.setBackground(Color.WHITE);
+        alignToTop.add(markdownArea, BorderLayout.PAGE_START);
+
+        this.add(new JScrollPane(alignToTop), BorderLayout.CENTER);
         this.add(pageList, BorderLayout.WEST);
         this.setSize(750,550);
         this.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
@@ -57,7 +62,6 @@ public class HelpWindow extends JFrame{
     public void popup(){
         this.setVisible(true);
     }
-
 
     //These 2 methods handle reading the help files and storing them in a map
     //To save having to read the file every time the user hits a button
