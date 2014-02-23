@@ -6,10 +6,9 @@ import java.io.File;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-
 public abstract class PageList extends JPanel{
 
-    private Object[] filesString = new String[]{"Intro","Help me 1","Help me 2","Licence"};
+    private String[] filesString = new String[]{"Intro","Help me 1","Help me 2","Licence"};
     private File[] filesObj; //It is a list of File objects
     private File markdownDirectory;
 
@@ -27,7 +26,11 @@ public abstract class PageList extends JPanel{
                 filesFileList.add(fileList[i]);
             }
         }
-        this.filesString = files.toArray();
+        String[] fileStringTemp = new String[files.size()];
+        for(int i=0; i<fileStringTemp.length; i++){
+            fileStringTemp[i] = files.get(i);
+        }
+        this.filesString = fileStringTemp;
 
         File[] temp = new File[filesFileList.size()];
         for(int i=0; i<temp.length; i++){
@@ -65,18 +68,18 @@ public abstract class PageList extends JPanel{
             public void valueChanged(ListSelectionEvent ev) {
                 if(ev.getValueIsAdjusting()){
                     int i= list.getSelectedIndex();
-                    optionPicked((File) filesObj[i]);
+                    optionPicked(filesObj[i]);
                 }
             }
         });
         this.add(new JScrollPane(list));
 
-        optionPicked((File) filesObj[0]); //Set default
+        optionPicked(filesObj[0]); //Set default
         list.setSelectedIndex(0);
     }
 
     public File[] getFileOptions() {
-        return filesObj;
+        return Arrays.copyOf(filesObj, filesObj.length);
     }
 
     public File getDefaultFile(){

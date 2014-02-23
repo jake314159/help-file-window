@@ -1,7 +1,5 @@
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
+import java.io.*;
 import java.util.Map;
 import java.util.TreeMap;
 import javax.swing.*;
@@ -74,7 +72,7 @@ public class HelpWindow extends JFrame{
     }
     private String readFile(File f){
         try {
-            BufferedReader br = new BufferedReader(new FileReader(f));
+            BufferedReader br = new BufferedReader(new InputStreamReader(new FileInputStream(f), "UTF-8"));
 
             StringBuilder sb = new StringBuilder();
             String line = br.readLine();
