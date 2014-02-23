@@ -36,12 +36,8 @@ Not all types of markdown are supported. The things which are supported are:
 
 + Headings up to h6
 + Bullet points
-+ Ordered lists
 + Italics
 + Bold
-+ Monospace
-+ Code (without highlighting)
-+ Block quotes
 
 This is not a compleate list and some other markdown syntax not on the list may work but hasn't been tested.
 
